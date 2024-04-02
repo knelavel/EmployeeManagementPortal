@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "EmploymentDetails";
+}
+
+<h1>EmploymentDetails</h1>
+
+<table>
+    <thead>
+        <th>Full Name</th>
+        <th>Earliest Hire Date</th>
+        <th>Latest Hire Date</th>
+        <th>Average Length of Employement</th>
+    </thead>
+    <tbody>
+        @foreach(var detail in Model)
+        {
+            <tr>
+                <td>@detail.FullName</td>
+                <td>@detail.EarliestHireDate.ToShortDateString()</td>
+                <td>@detail.LatestHireDate.ToShortDateString()</td>
+                <td>@detail.LatestHireDate.ToString("0.00")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

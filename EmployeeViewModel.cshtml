@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "EmployeeViewModel";
+}
+
+<h1>EmployeeViewModel</h1>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions">
+        <label>Phone number:</label>
+        <input type="text" name="phoneNumber"/>
+        <label>ZIP Code:</label>
+        <input type="text" name="zipCode"></input>
+        <button type="submit">Filte</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Addresses</th>
+        <th>Phone Numbers</th>
+    </thead>
+    <tbody>
+        @foreach(var employee in Model)
+        {
+            <tr>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>
+                    @foreach(var address in employee.Addresses)
+                    {
+                        <p>@address.Address1 @address.Address2</p>
+                    }
+                </td>
+
+                <td>
+                    @foreach (var address in employee.Phones)
+                    {
+                        <p>@address.PhoneNumber</p>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
